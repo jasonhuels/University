@@ -1,0 +1,32 @@
+@model University.Models.Student
+
+<h2>Student Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Level): @Html.DisplayFor(model => model.Level)</h3>
+<h3>International Student: @Html.DisplayFor(model => model.International)</h3>
+
+@if(@Model.Courses.Count == 0)
+{
+  <p>This student has no courses, yet.</p>
+}
+else
+{
+  <h4>Courses:</h4>
+  <ul>
+  @foreach(var join in Model.Courses)
+  {
+    <li>@join.Course.Name</li>
+    @using (Html.BeginForm("DeleteCourse", "Students"))
+    {
+      @Html.Hidden("joinId", @join.EnrollmentId)
+      <input type="submit" value="Delete" class="btn btn-success"/>
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit student", "Edit", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Delete student", "Delete", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Add a Course", "AddCourse", new { id = Model.StudentId })</p>

@@ -1,0 +1,17 @@
+@model University.Models.Course
+
+<h4>Add a new course</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+    <br>
+    @Html.LabelFor(model => model.CourseNum)
+    @Html.TextBoxFor(model => model.CourseNum)
+    <br>
+    @Html.LabelFor(model => model.StartTime)
+    @Html.TextBoxFor(model => model.StartTime)
+    <br>
+    <input type="submit" value="Add new category" class="btn btn-success" />
+}
+<p>@Html.ActionLink("Show all categories", "Index")</p>

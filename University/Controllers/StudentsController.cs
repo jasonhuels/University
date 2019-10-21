@@ -101,7 +101,7 @@ namespace University.Controllers
     }
 
     [HttpPost]
-    public ActionResult DeleteCategory(int joinId)
+    public ActionResult DeleteCourse(int joinId)
     {
         var joinEntry = _db.Enrollment.FirstOrDefault(entry => entry.EnrollmentId == joinId);
         _db.Enrollment.Remove(joinEntry);
